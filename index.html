@@ -1,23 +1,57 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <title>Sürpriz!</title>
+  <meta charset="UTF-8" />
+  <title>Kalp Etkileşimli Sayfa</title>
   <style>
     body {
-      background-color: black;
-      color: white;
-      font-family: sans-serif;
-      text-align: center;
-      margin-top: 20%;
+      margin: 0;
+      height: 100vh;
+      background-image: url('arkaplan.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      user-select: none;
     }
-    h1 {
-      font-size: 3em;
+
+    #heart {
+      font-size: 10rem;
+      cursor: pointer;
+      transition: transform 0.3s ease, color 0.3s ease;
+      user-select: none;
+    }
+
+    /* Tıklanınca büyüyüp kırmızıya dönen animasyon */
+    #heart.clicked {
+      color: #ff4d6d;
+      transform: scale(1.5);
+      animation: heartbeat 1s ease infinite;
+    }
+
+    @keyframes heartbeat {
+      0%, 100% {
+        transform: scale(1.5);
+      }
+      50% {
+        transform: scale(1.8);
+      }
     }
   </style>
 </head>
 <body>
-  <h1>Selam! Bu sayfaya sadece özel biri girebilir 😎</h1>
-  <p>Hazırsan seni şaşırtacak şeyler var ama sonra 😏</p>
+
+  <div id="heart">❤️</div>
+
+  <script>
+    const heart = document.getElementById('heart');
+
+    heart.addEventListener('click', () => {
+      heart.classList.toggle('clicked');
+    });
+  </script>
+
 </body>
 </html>
